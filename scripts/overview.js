@@ -1,3 +1,11 @@
-console.log('Linked n Loaded');
+import { skeletonDomString, renderToDom } from "./utlities.js";
 
-console.log('Yesterday, all my troubles seemed so far away')
+//define all your functions here
+
+function startApp() {
+  renderToDom(`#bodyDiv`, skeletonDomString)
+  //put rest of start up here
+}
+
+startApp()
+console.log("This is the overview page. The page should have rendered and this should have logged.")
