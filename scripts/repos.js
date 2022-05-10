@@ -3,9 +3,8 @@ import { skeletonDomString, renderToDom } from "./utlities.js";
 //define all your functions here
 
 function startApp() {
-  renderToDom(`#bodyDiv`, skeletonDomString)
+  renderToDom("#mainPage", skeletonDomString)
   //put rest of start up here
 }
 
 startApp()
-console.log("This is the repos page. The page should have rendered and this should have logged.")
