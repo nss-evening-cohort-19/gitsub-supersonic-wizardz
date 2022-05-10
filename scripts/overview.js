@@ -1,3 +1,10 @@
-console.log('Linked n Loaded');
+import { skeletonDomString, renderToDom } from "./utlities.js";
 
-console.log('Yesterday, all my troubles seemed so far away')
+//define all your functions here
+
+function startApp() {
+  renderToDom("#mainPage", skeletonDomString);
+  //put rest of start up here
+}
+
+startApp();
