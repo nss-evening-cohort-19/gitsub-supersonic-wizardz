@@ -64,13 +64,28 @@ const packageOptions = (array) => {
   }
 
 const newProjectForm = () => {
-  const domString = ``
+  const domString = `
+  <div>
+  <h4>Create a New Project</h4>
+  <h6>Coordinate, track, and update your work in one place, so projects stay transparent and on schedule</h6>
+  <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Project Board Name</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="My Cool New Project">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+<button class="btn btn-success" type="submit">Create Project</button>
+</div>`;
+renderToDom("#uploadContent", domString);
 }
 
 function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
   //put rest of start up here
   packageOptions(packageData);
+  newProjectForm();
 }
 
 startApp()
