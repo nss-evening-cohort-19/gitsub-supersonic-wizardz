@@ -81,7 +81,7 @@ const newProjectForm = () => {
      <input type="text" class="form-control" id="hook" placeholder="Please explain your package's features">
     </div>
     <hr>
-    <button class="btn btn-success" type="submit">Create Project</button>
+    <button class="btn btn-success" type="submit">Add Package</button>
   </form>`;
 renderToDom("#uploadContent", domString);
 }
