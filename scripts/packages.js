@@ -52,6 +52,7 @@ const packageOptions = (array) => {
      <div class="col-sm-6">
        <div class="card">
          <div class="card-body">
+          <img src="${item.logo}" alt="Product's Logo">
            <h5 class="card-title">${item.name}</h5>
            <p class="card-text">${item.hook}</p>
            <a href="#" class="btn btn-success">Learn More</a>
@@ -70,11 +71,11 @@ const newProjectForm = () => {
     <div class="mb-3">
      <label for="exampleFormControlInput1" class="form-label">New Package Name</label>
      <input type="text" class="form-control" id="name" placeholder="e.g. GuardRails">
-    </div>
+     </div>
     <div class="mb-3">
-     <label for="exampleFormControlInput1" class="form-label">URL of Company's Logo</label>
+     <label for="exampleFormControlInput1" class="form-label">URL of Product's Logo</label>
      <input type="text" class="form-control" id="logo" placeholder="https://avatars.githubusercontent.com/ml/4950?s=140&v=4">
-    </div>
+     </div>
     <div class="mb-3">
      <label for="exampleFormControlInput1" class="form-label">Description</label>
      <input type="text" class="form-control" id="hook" placeholder="Please explain your package's features">
