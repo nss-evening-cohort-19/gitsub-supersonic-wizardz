@@ -76,6 +76,7 @@ const newProjectForm = () => {
   <label for="exampleFormControlTextarea1" class="form-label">Description</label>
   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
+<hr>
 <button class="btn btn-success" type="submit">Create Project</button>
 </div>`;
 renderToDom("#uploadContent", domString);
