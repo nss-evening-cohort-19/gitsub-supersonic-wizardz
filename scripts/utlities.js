@@ -11,6 +11,7 @@ const skeletonDomString = `
               <a class="nav-link" href="./packages.html">Packages</a>
             </nav>
           </navbar>
+          <div id="titleDiv"></div>
           <div id="uploadedContent" class="uploaded">
             <!-- This is where your rendered content goes -->
           </div>
