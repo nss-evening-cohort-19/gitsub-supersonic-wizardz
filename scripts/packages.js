@@ -68,6 +68,7 @@ const packageOptions = (array) => {
   renderToDom("#uploadedContent", domString);
   }
 
+// NEW PACKAGE FORM
 const newProjectForm = () => {
   const domString = `
   <h4>Add a New Package</h4>
@@ -90,6 +91,8 @@ const newProjectForm = () => {
 renderToDom("#uploadContent", domString);
 }
 
+// -------EVENT LISTENERS------- //
+// FORM SUBMIT
 const packageEventListeners = () => {
   // LOGIC FOR FORM SUBMIT
   const form = document.querySelector("form");
@@ -108,6 +111,18 @@ const packageEventListeners = () => {
     packageOptions(packageData);
 
     form.reset();
+  });
+
+  // DELETE
+  
+  // DELETE BUTTON ON CARD
+  document.querySelector("#uploadedContent").addEventListener("click", (e) => {
+    if (e.target.id.includes("delete")) {
+      const [method, id] = e.target.id.split("--");
+      const deleted = packageData.find(pkg => pkg.id === parseInt(id));
+      packageData.splice(deleted, 1);
+      packageOptions(packageData);
+    }
   });
 }
 
