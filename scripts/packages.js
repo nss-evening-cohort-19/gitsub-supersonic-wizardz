@@ -112,8 +112,6 @@ const packageEventListeners = () => {
 
     form.reset();
   });
-
-  // DELETE
   
   // DELETE BUTTON ON CARD
   document.querySelector("#uploadedContent").addEventListener("click", (e) => {
