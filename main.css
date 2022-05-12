@@ -6,10 +6,10 @@ body{
   height: 100vh;
   padding: 0;
   margin: 0;
-  color: red;
+  color: black;
+  background-color: aliceblue;
 }
 .frontPage{
-  border: 2px solid red;
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -17,10 +17,8 @@ body{
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  background: black;
 }
 .mainPortion{
-  border: 2px solid red;
   height: 90vh;
   width: 95vw;
   padding: 1rem;
@@ -30,7 +28,6 @@ body{
   justify-content: space-around;
 }
 .leftSide{
-  border: 2px solid red;
   height: 80vh;
   width: 25vw;
   display: flex;
@@ -41,34 +38,28 @@ img{
   border-radius: 50%;
 }
 .rightSide{
-  border: 2px solid red;
   width: 66%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
 }
 .head{
-  border: 2px solid red;
   display: flex;
   justify-content: space-between;
 }
 .uploaded{
-  border: 2px solid red;
   height: 50vh;
   overflow: scroll;
 }
 .uploads{
-  border: 2px solid red;
   height: 30vh;
   padding: .5rem;
 }
 .foot{
-  border: 2px solid red;
   width: 95vw;
   justify-content: space-around;
 }
 .nav{
-  border: 2px solid red;
   display: flex;
   justify-content: space-evenly;
 }
