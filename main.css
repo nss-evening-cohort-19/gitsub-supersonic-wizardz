@@ -37,6 +37,9 @@ body{
   flex-flow: column nowrap;
   padding: 1rem;
 }
+img{
+  border-radius: 50%;
+}
 .rightSide{
   border: 2px solid red;
   width: 66%;

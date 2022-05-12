@@ -1,7 +1,24 @@
 const skeletonDomString = `
     
       <div id="topContent" class="mainPortion">
-        <div id="profileContent" class="leftSide"></div>
+        <div id="profileContent" class="leftSide">
+        <img src="https://placebeard.it/500
+        " alt="Man with beard">
+  
+        <h4>Mr. Beardly</h4>
+        <p>@TheBeardedOne</p>
+        <div class = 'btnGroup'>
+          <button type="button" class="btn btn-outline-danger btn-sm">Follow</button>
+          <button type="button" class="btn btn-outline-danger btn-sm">Sponsor</button>
+          <button type="button" class="btn btn-outline-danger btn-sm">...</button>
+        </div>
+        <ul class='profileDetails'>
+          <li>Location</li>
+          <li>Personal Email</li>
+          <li>Twitter Link</li>
+          <li>Github Profile</li>
+        </ul>
+        </div>
         <div id="rightSideContent" class="rightSide">
           <navbar id="navigation" class="head">
             <nav class="nav">
