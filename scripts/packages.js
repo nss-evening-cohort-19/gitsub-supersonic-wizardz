@@ -117,7 +117,7 @@ const packageEventListeners = () => {
   document.querySelector("#uploadedContent").addEventListener("click", (e) => {
     if (e.target.id.includes("delete")) {
       const [method, id] = e.target.id.split("--");
-      const deleted = packageData.find(pkg => pkg.id === parseInt(id));
+      const deleted = packageData.findIndex(pkg => pkg.id === parseInt(id));
       packageData.splice(deleted, 1);
       packageOptions(packageData);
     }
