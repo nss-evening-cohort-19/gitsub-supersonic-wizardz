@@ -19,11 +19,11 @@ const mpData = [
 const renderTheCards = () => {
   let domString = ``;
   for (const article of mpData) {
-    domString += `<div class="card" style="width: 40rem;">
+    domString += `<div class="card" style="width: 25rem;">
   <div class="card-body">
-    <h5 class="card-title">${article.contentTitle}</h5>
-    <p class="card-text">${article.contentDescription}</p>
-    <a href="#" id="delete--${article.id}" class="btn btn-danger">Delete</a>
+    <p class="card-title"><strong>📖 ${article.contentTitle}</strong></p>
+    <p class="card-text"><sup>${article.contentDescription}</sup></p>
+    <a href="#" id="delete--${article.id}" class="btn btn-outline-danger btn-sm">X</a>
   </div>
 </div>`;
   }
