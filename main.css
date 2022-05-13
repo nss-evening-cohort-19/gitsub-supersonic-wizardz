@@ -63,3 +63,8 @@ img{
   display: flex;
   justify-content: space-evenly;
 }
+
+/*Package CSS*/
+.float-right {
+  float: right;
+}
