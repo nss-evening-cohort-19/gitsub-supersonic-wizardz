@@ -65,6 +65,27 @@ img{
 }
 
 /*Package CSS*/
+.package-cards {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .float-right {
   float: right;
+}
+
+.container {
+  display: flex;
+}
+
+.logo-img {
+  height: 9%;
+  width: 9%;
+  margin-left: -22px;
+  margin-right: 8px;
+}
+
+
+.product-name {
+  flex: 1;
 }
