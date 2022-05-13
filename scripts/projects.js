@@ -1,4 +1,4 @@
-import { skeletonDomString, renderToDom } from "./utlities.js";
+import { skeletonDomString, renderToDom, searchSetup } from "./utlities.js";
 
 let projects = [
   {
@@ -95,29 +95,14 @@ function formSetup() {
 renderToDom(`#uploadContent`, formString);
 }
 
-function searchSetup() {
-  const searchString = `
-  <form>
-  <div class="form-container" id="form-container">
-    <div class="row g-3 align-items-center">
-      <div class="col-auto">
-        <input type="text" class="form-control" id="search-field" aria-label="search-field" required placeholder="🔍 Search all">
-     </div>
-    </div>
-  </div>
-</form>
-  `
-  renderToDom(`#searchBar`, searchString )
-}
+
 
 const search = (event) => {
   const userInput = event.target.value.toLowerCase();
-  console.log(userInput);
   const searchResult = projects.filter(taco =>
     taco.name.toLowerCase().includes(userInput) ||
     taco.description.toLowerCase().includes(userInput)
     )
-  console.log(searchResult);
   projectsOnDom(searchResult);
 }
 
