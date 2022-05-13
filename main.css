@@ -63,7 +63,9 @@ img{
   display: flex;
   justify-content: space-evenly;
 }
-
+.searchBar {
+  margin: 5px 0px;
+}
 /*Package CSS*/
 .package-cards {
   display: flex;
