@@ -21,7 +21,7 @@ let projects = [
   }
 ]
 
-function projectsOnDom() {
+function projectsOnDom(taco) {
   const timeStamp = Math.round(Date.now() / 1000);
   let headerString = `<div class="card" style="width: 100%;" class="project-card">
   <div class="card-header">
@@ -32,7 +32,7 @@ function projectsOnDom() {
 
   let projectsString = ""
 
-  for (const project of projects) {
+  for (const project of taco) {
     let timeAgo = timeStamp - project.time;
     let timeUnits = 'seconds'
     if (timeAgo >= 60 && timeAgo < 3600) {
@@ -69,7 +69,7 @@ function projectsOnDom() {
     ${project.description}
     </small>
     <div>
-      (options)
+      ...
     </div>
   </li>`
   }
@@ -110,6 +110,17 @@ function searchSetup() {
   renderToDom(`#searchBar`, searchString )
 }
 
+const search = (event) => {
+  const userInput = event.target.value.toLowerCase();
+  console.log(userInput);
+  const searchResult = projects.filter(taco =>
+    taco.name.toLowerCase().includes(userInput) ||
+    taco.description.toLowerCase().includes(userInput)
+    )
+  console.log(searchResult);
+  projectsOnDom(searchResult);
+}
+
 function eventListeners() {
   document.querySelector('#projectForm').addEventListener('submit', (e) => {
     const timestamp = Math.round(Date.now() / 1000);
@@ -125,13 +136,14 @@ function eventListeners() {
     projectsOnDom(projects)
     document.querySelector('#projectForm').reset();
 });
+  document.querySelector('#search-field').addEventListener('keyup', search)
 }
 
 function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
   formSetup();
   searchSetup();
-  projectsOnDom();
+  projectsOnDom(projects);
   eventListeners();
   //put rest of start up here
 }
