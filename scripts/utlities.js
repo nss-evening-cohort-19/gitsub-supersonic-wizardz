@@ -29,6 +29,7 @@ const skeletonDomString = `
             </nav>
           </navbar>
           <div id="titleDiv"></div>
+          <div id="searchBar" class="searchBar"></div>
           <div id="uploadedContent" class="uploaded">
             <!-- This is where your rendered content goes -->
           </div>
@@ -76,9 +77,24 @@ const skeletonDomString = `
         </ul>
       </footer>`;
 
+
 function renderToDom(divToChange, stringToUse) {
-  console.log(divToChange);
   document.querySelector(divToChange).innerHTML = stringToUse;
 }
 
-export { skeletonDomString, renderToDom };
+function searchSetup() {
+  const searchString = `
+  <form>
+  <div class="form-container" id="form-container">
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <input type="text" class="form-control" id="search-field" aria-label="search-field" required placeholder="🔍 Search all">
+     </div>
+    </div>
+  </div>
+</form>
+  `
+  renderToDom(`#searchBar`, searchString)
+}
+
+export { skeletonDomString, renderToDom, searchSetup };

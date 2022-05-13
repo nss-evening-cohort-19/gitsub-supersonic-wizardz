@@ -1,4 +1,4 @@
-import { skeletonDomString, renderToDom } from "./utlities.js";
+import { skeletonDomString, renderToDom, searchSetup } from "./utlities.js";
 
 let projects = [
   {
@@ -21,7 +21,7 @@ let projects = [
   }
 ]
 
-function projectsOnDom() {
+function projectsOnDom(taco) {
   const timeStamp = Math.round(Date.now() / 1000);
   let headerString = `<div class="card" style="width: 100%;" class="project-card">
   <div class="card-header">
@@ -32,7 +32,7 @@ function projectsOnDom() {
 
   let projectsString = ""
 
-  for (const project of projects) {
+  for (const project of taco) {
     let timeAgo = timeStamp - project.time;
     let timeUnits = 'seconds'
     if (timeAgo >= 60 && timeAgo < 3600) {
@@ -69,7 +69,7 @@ function projectsOnDom() {
     ${project.description}
     </small>
     <div>
-      (options)
+      ...
     </div>
   </li>`
   }
@@ -95,6 +95,17 @@ function formSetup() {
 renderToDom(`#uploadContent`, formString);
 }
 
+
+
+const search = (event) => {
+  const userInput = event.target.value.toLowerCase();
+  const searchResult = projects.filter(taco =>
+    taco.name.toLowerCase().includes(userInput) ||
+    taco.description.toLowerCase().includes(userInput)
+    )
+  projectsOnDom(searchResult);
+}
+
 function eventListeners() {
   document.querySelector('#projectForm').addEventListener('submit', (e) => {
     const timestamp = Math.round(Date.now() / 1000);
@@ -110,12 +121,14 @@ function eventListeners() {
     projectsOnDom(projects)
     document.querySelector('#projectForm').reset();
 });
+  document.querySelector('#search-field').addEventListener('keyup', search)
 }
 
 function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
   formSetup();
-  projectsOnDom();
+  searchSetup();
+  projectsOnDom(projects);
   eventListeners();
   //put rest of start up here
 }
