@@ -6,42 +6,42 @@ const packageData = [
     id: 1,
     name: "Circle CI",
     logo: "https://avatars.githubusercontent.com/ml/7?s=140&v=4",
-    hook: "Automatically build, test. and deploy your project in minutes",
+    description: "Automatically build, test. and deploy your project in minutes",
     details: ""
   },
   {
     id: 2,
     name: "CodeFactor",
     logo: "https://avatars.githubusercontent.com/ml/704?s=140&v=4",
-    hook: "Automated code review for GitHub",
+    description: "Automated code review for GitHub",
     details: ""
   },
   {
     id: 3,
     name: "PullRequest",
     logo: "https://avatars.githubusercontent.com/ml/437?s=140&v=4",
-    hook: "Expert On-Demand Code Review as a Service",
+    description: "Expert On-Demand Code Review as a Service",
     details: ""
   },
   {
     id: 4,
     name: "BuildPulse",
     logo: "https://avatars.githubusercontent.com/ml/4950?s=140&v=4",
-    hook: "Automatically detect, track, and rank flaky tests so you can regain trust in your test suite",
+    description: "Automatically detect, track, and rank flaky tests so you can regain trust in your test suite",
     details: ""
   },
   {
     id: 5,
     name: "GuardRails",
     logo: "https://avatars.githubusercontent.com/ml/2860?s=140&v=4",
-    hook: "GuardRails provides continuous security feedback for modern development teams",
+    description: "GuardRails provides continuous security feedback for modern development teams",
     details: ""
   }, 
   {
     id: 6,
     name: "CommitCheck",
     logo: "https://avatars.githubusercontent.com/ml/4693?s=140&v=4",
-    hook: "CommitCheck ensures your commit messages are consistent and contain all required information",
+    description: "CommitCheck ensures your commit messages are consistent and contain all required information",
     details: ""
   }
 ]
@@ -58,7 +58,7 @@ const packageOptions = (array) => {
            <button type="button" id="delete--${item.id}" class="btn btn-danger btn-sm float-right">X</button>
            <img src="${item.logo}" alt="Product's Logo">
            <h5 class="card-title">${item.name}</h5>
-           <p class="card-text">${item.hook}</p>
+           <p class="card-text">${item.description}</p>
            <a href="#" class="btn btn-success">Learn More</a>
          </div>
        </div>
@@ -83,7 +83,7 @@ const newProjectForm = () => {
      </div>
     <div class="mb-3">
      <label for="exampleFormControlInput1" class="form-label">Description</label>
-     <input type="text" class="form-control" id="hook" placeholder="Please explain your package's features">
+     <input type="text" class="form-control" id="description" placeholder="Please explain your package's features">
     </div>
     <hr>
     <button class="btn btn-success" type="submit">Add Package</button>
@@ -103,7 +103,7 @@ const packageEventListeners = () => {
     id: packageData.length + 1,
     name: document.querySelector("#name").value,
     logo: document.querySelector("#logo").value,
-    hook: document.querySelector("#hook").value,
+    description: document.querySelector("#description").value,
     details: ""
     }
 
