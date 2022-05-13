@@ -95,6 +95,21 @@ function formSetup() {
 renderToDom(`#uploadContent`, formString);
 }
 
+function searchSetup() {
+  const searchString = `
+  <form>
+  <div class="form-container" id="form-container">
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <input type="text" class="form-control" id="search-field" aria-label="search-field" required placeholder="Search all">
+     </div>
+    </div>
+  </div>
+</form>
+  `
+  renderToDom(`#searchBar`, searchString )
+}
+
 function eventListeners() {
   document.querySelector('#projectForm').addEventListener('submit', (e) => {
     const timestamp = Math.round(Date.now() / 1000);
@@ -115,6 +130,7 @@ function eventListeners() {
 function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
   formSetup();
+  searchSetup();
   projectsOnDom();
   eventListeners();
   //put rest of start up here
