@@ -29,7 +29,7 @@ const skeletonDomString = `
             </nav>
           </navbar>
           <div id="titleDiv"></div>
-          <div id="searchBar"></div>
+          <div id="searchBar" class="searchBar"></div>
           <div id="uploadedContent" class="uploaded">
             <!-- This is where your rendered content goes -->
           </div>

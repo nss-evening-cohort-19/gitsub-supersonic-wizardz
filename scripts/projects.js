@@ -101,7 +101,7 @@ function searchSetup() {
   <div class="form-container" id="form-container">
     <div class="row g-3 align-items-center">
       <div class="col-auto">
-        <input type="text" class="form-control" id="search-field" aria-label="search-field" required placeholder="Search all">
+        <input type="text" class="form-control" id="search-field" aria-label="search-field" required placeholder="🔍 Search all">
      </div>
     </div>
   </div>
