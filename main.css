@@ -68,7 +68,7 @@ img{
 }
 
 /*Package CSS*/
-.package-cards {
+.uploaded {
   display: flex;
   flex-flow: row wrap;
 }
