@@ -66,6 +66,7 @@ img{
 .searchBar {
   margin: 5px 0px;
 }
+
 /*Package CSS*/
 .package-cards {
   display: flex;
@@ -83,7 +84,7 @@ img{
 .logo-img {
   height: 9%;
   width: 9%;
-  margin-left: -22px;
+  margin-left: -10px;
   margin-right: 8px;
 }
 
