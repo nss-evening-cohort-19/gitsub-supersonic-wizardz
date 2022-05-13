@@ -48,11 +48,11 @@ img{
   justify-content: space-between;
 }
 .uploaded{
-  height: 50vh;
+  height: 40vh;
   overflow: scroll;
 }
 .uploads{
-  height: 30vh;
+  height: 40vh;
   padding: .5rem;
 }
 .foot{
