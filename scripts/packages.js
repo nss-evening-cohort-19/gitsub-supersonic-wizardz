@@ -59,7 +59,7 @@ const packageOptions = (array) => {
           <h5 class="card-title product-name">${item.name}</h5>
         </div>
         <p class="card-text">${item.description}</p>
-        <a href="#" class="btn btn-success">Learn More</a>
+        <a href="./packagesLearnMore.html" class="btn btn-primary">Learn More</a>
        </div>
       </div>`
   }
@@ -76,18 +76,32 @@ const newProjectForm = () => {
      <input type="text" class="form-control" id="name" placeholder="e.g. GuardRails">
      </div>
     <div class="mb-3">
-     <label for="exampleFormControlInput1" class="form-label">URL of Product's Logo</label>
+     <label for="exampleFormControlInput1" class="form-label">URL of Package's Logo</label>
      <input type="text" class="form-control" id="logo" placeholder="https://avatars.githubusercontent.com/ml/4950?s=140&v=4">
      </div>
     <div class="mb-3">
-     <label for="exampleFormControlInput1" class="form-label">Description</label>
+     <label for="exampleFormControlInput1" class="form-label">Hook Statement About Package</label>
      <input type="text" class="form-control" id="description" placeholder="Please explain your package's features">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Full Description of Package</label>
+      <textarea class="form-control" id="details" rows="3"></textarea>
     </div>
     <hr>
     <button class="btn btn-success" type="submit">Add Package</button>
   </form>`;
 renderToDom("#uploadContent", domString);
 }
+
+// const learnMore = () => {
+//   const domString = `
+//   <img src="${packageData.logo}" alt="Product's Logo">
+//     <h1>${packageData.name}</h1>
+//     <p id="description">${packageData.description}</p>
+//     <p id="details">${packageData.details}</p>
+//   `;
+//   renderToDom("#learnMoreBtn", domString);
+// }
 
 // -------EVENT LISTENERS------- //
 // FORM SUBMIT
@@ -126,6 +140,7 @@ function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
   //put rest of start up here
   newProjectForm();
+  // learnMore();
   packageOptions(packageData);
   packageEventListeners();
 }
