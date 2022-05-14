@@ -1,80 +1,120 @@
-import { skeletonDomString, renderToDom, searchSetup } from "./utlities.js";
+import { skeletonDomString, renderToDom, searchSetup, createId } from "./utlities.js";
 
 let projects = [
   {
-    id:0,
-    name: "Test",
-    description: "testing how my data will work",
-    time: 1652224873
+    id: 0,
+    name: "Pet Adoption",
+    description: "Front end project for the Indian River Humane Society",
+    time: 1652224873,
+    privateStatus: false,
   },
   {
-    id:1,
-    name: "Experiment",
-    description: "testing how my data will work, maybe a description will be too long what will happen",
-    time: 1652134873
+    id: 1,
+    name: "Sorting Hat",
+    description:
+      "Individual project for NSS evening cohort 19, basic CRUD functions",
+    time: 1652134873,
+    privateStatus: false,
   },
   {
-    id:2,
-    name: "Foray",
-    description: "testing how my precious data will fail unexpectedly",
-    time: 1652234873
-  }
-]
+    id: 2,
+    name: "Word counter",
+    description:
+      "simple word counter, learning how to target elements on the DOM",
+    time: 1652234873,
+    privateStatus: false,
+  },
+  {
+    id: 3,
+    name: "Spanish flashcards",
+    description: "flashcard app for some common regular and irregular verbs",
+    time: 1650234873,
+    privateStatus: true,
+  },
+  {
+    id: 4,
+    name: "Ear training app",
+    description: "basic relative pitch examples on the client side",
+    time: 1620234873,
+    privateStatus: true,
+  },
+];
 
 function projectsOnDom(taco) {
   const timeStamp = Math.round(Date.now() / 1000);
-  let headerString = `<div class="card" style="width: 100%;" class="project-card">
-  <div class="card-header">
-    ${projects.length} Open, 0 closed
-  </div>
-  <div id="dataDiv"></div>
-</div>`
-
-  let projectsString = ""
+  let projectsString = "";
 
   for (const project of taco) {
     let timeAgo = timeStamp - project.time;
-    let timeUnits = 'seconds'
+    let timeUnits = "seconds";
     if (timeAgo >= 60 && timeAgo < 3600) {
       timeAgo = Math.round(timeAgo / 60);
       if (timeAgo === 1) {
-        timeUnits = 'minute';
+        timeUnits = "minute";
       } else {
-        timeUnits = 'minutes';
+        timeUnits = "minutes";
       }
     } else if (timeAgo >= 3600 && timeAgo < 86400) {
       timeAgo = Math.round(timeAgo / 3600);
       if (timeAgo === 1) {
-        timeUnits = 'hour';
+        timeUnits = "hour";
       } else {
-        timeUnits = 'hours';
+        timeUnits = "hours";
       }
     } else if (timeAgo > 86400) {
       timeAgo = Math.round(timeAgo / 86400);
       if (timeAgo === 1) {
-        timeUnits = 'day';
+        timeUnits = "day";
       } else {
-        timeUnits = 'days';
+        timeUnits = "days";
       }
     }
+
+    let privateLabel = "";
+    if (project.privateStatus === true) {
+      privateLabel = "private";
+    }
+
     projectsString += `<li class="list-group-item d-flex justify-content-between align-items-center">
-    <small>
+    <small style="width: 25%;">
       <div class="fw-bold">
         ${project.name}
-        <span class="badge bg-primary rounded-pill">private</span>
+        <span class="badge bg-secondary rounded-pill">${privateLabel}</span>
       </div>
-      Created ${timeAgo} ${timeUnits} ago
+      🕓 Updated ${timeAgo} ${timeUnits} ago
     </small>
-    <small class="text-truncate" style="width: 50%;">
+    <small class="text-truncate" style="width: 60%;">
     ${project.description}
     </small>
     <div>
       ...
     </div>
-  </li>`
+  </li>`;
   }
+  renderToDom("#tallies", `${projects.length} Open ~ 0 closed`)
+  renderToDom("#dataDiv", projectsString);
+}
+
+function projectHeaderSetup() {
+  let headerString = `<div class="card project-card">
+  <div class="card-header project-header" id="project-header">
+    <div id="tallies">${projects.length} Open ~ 0 closed</div>
+    <div id="sort-div">
+      <div class="dropdown-center" id="sort-btn">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn" id="sort">
+          <li><a class="dropdown-item" href="#" id="newest">by newest activity</a></li>
+          <li><a class="dropdown-item" href="#" id="oldest">by oldest activity</a></li>
+          <li><a class="dropdown-item" href="#" id="alphabetical">by title ascending</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="dataDiv"></div>
+  </div>`;
   renderToDom(`#uploadedContent`, headerString);
-  renderToDom("#dataDiv", projectsString)
 }
 
 function formSetup() {
@@ -91,46 +131,90 @@ function formSetup() {
 <button type="submit" class="btn btn-success">Create Project</button>
 </div>
 </form>
-`
-renderToDom(`#uploadContent`, formString);
+`;
+  renderToDom(`#uploadContent`, formString);
 }
-
-
 
 const search = (event) => {
   const userInput = event.target.value.toLowerCase();
-  const searchResult = projects.filter(taco =>
-    taco.name.toLowerCase().includes(userInput) ||
-    taco.description.toLowerCase().includes(userInput)
-    )
+  const searchResult = projects.filter(
+    (taco) =>
+      taco.name.toLowerCase().includes(userInput) ||
+      taco.description.toLowerCase().includes(userInput)
+  );
   projectsOnDom(searchResult);
+};
+
+function sortAndRender(taco) {
+    let dataCopy = [...projects];
+    function newest(a, b) {
+      if (a.time > b.time) {
+        return -1;
+      }
+      if (a.time < b.time) {
+        return 1;
+      }
+      return 0;
+    }
+    function oldest(a, b) {
+      if (a.time < b.time) {
+        return -1;
+      }
+      if (a.time > b.time) {
+        return 1;
+      }
+      return 0;
+    }
+    function alphabetical(a, b) {
+      if (a.name.charAt(0) < b.name.charAt(0)) {
+        return -1;
+      }
+      if (a.name.charAt(0) > b.name.charAt(0)) {
+        return 1;
+      }
+      return 0;
+    }
+    if (taco === "newest") {
+      dataCopy.sort(newest);
+    }
+    if (taco === "oldest") {
+      dataCopy.sort(oldest);
+    }
+    if (taco === "alphabetical") {
+      dataCopy.sort(alphabetical);
+    }
+    projectsOnDom(dataCopy);
 }
 
 function eventListeners() {
-  document.querySelector('#projectForm').addEventListener('submit', (e) => {
+  document.querySelector("#projectForm").addEventListener("submit", (e) => {
     const timestamp = Math.round(Date.now() / 1000);
     e.preventDefault(); // this goes in EVERY form submit to prevent page reload
-    
     const newProjectObject = {
-      id: 0,
+      id: createId(projects),
       name: document.querySelector("#nameInput").value,
       description: document.querySelector("#descriptionInput").value,
-      time: timestamp
-    }
+      time: timestamp,
+      privateStatus: false,
+    };
     projects.push(newProjectObject);
-    projectsOnDom(projects)
-    document.querySelector('#projectForm').reset();
-});
-  document.querySelector('#search-field').addEventListener('keyup', search)
+    projectsOnDom(projects);
+    document.querySelector("#projectForm").reset();
+    console.log(newProjectObject)
+  });
+  document.querySelector("#search-field").addEventListener("keyup", search);
+  document.querySelector("#sort").addEventListener("click", (e) => {
+    sortAndRender(e.target.id);
+  });
 }
 
 function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
+  projectHeaderSetup();
   formSetup();
   searchSetup();
   projectsOnDom(projects);
   eventListeners();
-  //put rest of start up here
 }
 
-startApp()
+startApp();

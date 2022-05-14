@@ -1,4 +1,4 @@
-body{
+body {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -9,7 +9,7 @@ body{
   color: black;
   background-color: aliceblue;
 }
-.frontPage{
+.frontPage {
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -18,7 +18,7 @@ body{
   justify-content: center;
   align-items: center;
 }
-.mainPortion{
+.mainPortion {
   height: 90vh;
   width: 95vw;
   padding: 1rem;
@@ -27,53 +27,65 @@ body{
   display: flex;
   justify-content: space-around;
 }
-.leftSide{
+.leftSide {
   height: 80vh;
   width: 25vw;
   display: flex;
   flex-flow: column nowrap;
   padding: 1rem;
 }
-img{
+img {
   border-radius: 50%;
 }
-.rightSide{
+.rightSide {
   width: 66%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
 }
-li{
+li {
   list-style: none;
 }
-.head{
+.head {
   display: flex;
   justify-content: space-between;
 }
-.uploaded{
+.uploaded {
   height: 40vh;
   display: flex;
   flex-flow: row wrap;
   overflow: scroll;
 }
-.mpCard{
+.mpCard {
   height: fit-content;
-  margin: .5rem;
+  margin: 0.5rem;
 }
-.uploads{
+.uploads {
   height: 40vh;
-  padding: .5rem;
+  padding: 0.5rem;
 }
-.foot{
+.foot {
   width: 95vw;
   justify-content: space-around;
 }
-.nav{
+.nav {
   display: flex;
   justify-content: space-evenly;
 }
 .searchBar {
   margin: 5px 0px;
+}
+
+/*Projects CSS*/
+.project-card {
+  width: 100%;
+  align-self: start;
+}
+
+.project-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 /*Package CSS*/
@@ -84,6 +96,9 @@ li{
 
 .float-right {
   float: right;
+}
+.heartRed {
+  color: red;
 }
 
 .container {
@@ -96,7 +111,6 @@ li{
   margin-left: -10px;
   margin-right: 8px;
 }
-
 
 .product-name {
   flex: 1;
