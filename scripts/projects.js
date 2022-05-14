@@ -1,43 +1,44 @@
-import { skeletonDomString, renderToDom, searchSetup } from "./utlities.js";
+import { skeletonDomString, renderToDom, searchSetup, createId } from "./utlities.js";
 
 let projects = [
   {
-    id:0,
+    id: 0,
     name: "Pet Adoption",
     description: "Front end project for the Indian River Humane Society",
     time: 1652224873,
     privateStatus: false,
   },
   {
-    id:1,
+    id: 1,
     name: "Sorting Hat",
-    description: "Individual project for NSS evening cohort 19, basic CRUD functions",
+    description:
+      "Individual project for NSS evening cohort 19, basic CRUD functions",
     time: 1652134873,
     privateStatus: false,
   },
   {
-    id:2,
+    id: 2,
     name: "Word counter",
-    description: "simple word counter, learning how to target elements on the DOM",
+    description:
+      "simple word counter, learning how to target elements on the DOM",
     time: 1652234873,
     privateStatus: false,
   },
   {
-    id:3,
+    id: 3,
     name: "Spanish flashcards",
     description: "flashcard app for some common regular and irregular verbs",
     time: 1650234873,
     privateStatus: true,
-  }
-  ,
+  },
   {
-    id:4,
+    id: 4,
     name: "Ear training app",
     description: "basic relative pitch examples on the client side",
     time: 1620234873,
     privateStatus: true,
-  }
-]
+  },
+];
 
 function projectsOnDom(taco) {
   const timeStamp = Math.round(Date.now() / 1000);
@@ -49,48 +50,48 @@ function projectsOnDom(taco) {
         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
         Sort
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn">
-          <li><a class="dropdown-item" href="#">by newest activity</a></li>
-          <li><a class="dropdown-item" href="#">by oldest activity</a></li>
-          <li><a class="dropdown-item" href="#">by title ascending</a></li>
+        <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn" id="sort">
+          <li><a class="dropdown-item" href="#" id="newest">by newest activity</a></li>
+          <li><a class="dropdown-item" href="#" id="oldest">by oldest activity</a></li>
+          <li><a class="dropdown-item" href="#" id="alphabetical">by title ascending</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div id="dataDiv"></div>
-  </div>`
+  </div>`;
 
-  let projectsString = ""
+  let projectsString = "";
 
   for (const project of taco) {
     let timeAgo = timeStamp - project.time;
-    let timeUnits = 'seconds'
+    let timeUnits = "seconds";
     if (timeAgo >= 60 && timeAgo < 3600) {
       timeAgo = Math.round(timeAgo / 60);
       if (timeAgo === 1) {
-        timeUnits = 'minute';
+        timeUnits = "minute";
       } else {
-        timeUnits = 'minutes';
+        timeUnits = "minutes";
       }
     } else if (timeAgo >= 3600 && timeAgo < 86400) {
       timeAgo = Math.round(timeAgo / 3600);
       if (timeAgo === 1) {
-        timeUnits = 'hour';
+        timeUnits = "hour";
       } else {
-        timeUnits = 'hours';
+        timeUnits = "hours";
       }
     } else if (timeAgo > 86400) {
       timeAgo = Math.round(timeAgo / 86400);
       if (timeAgo === 1) {
-        timeUnits = 'day';
+        timeUnits = "day";
       } else {
-        timeUnits = 'days';
+        timeUnits = "days";
       }
     }
 
     let privateLabel = "";
     if (project.privateStatus === true) {
-      privateLabel = "private"
+      privateLabel = "private";
     }
 
     projectsString += `<li class="list-group-item d-flex justify-content-between align-items-center">
@@ -107,10 +108,10 @@ function projectsOnDom(taco) {
     <div>
       ...
     </div>
-  </li>`
+  </li>`;
   }
   renderToDom(`#uploadedContent`, headerString);
-  renderToDom("#dataDiv", projectsString)
+  renderToDom("#dataDiv", projectsString);
 }
 
 function formSetup() {
@@ -127,38 +128,77 @@ function formSetup() {
 <button type="submit" class="btn btn-success">Create Project</button>
 </div>
 </form>
-`
-renderToDom(`#uploadContent`, formString);
+`;
+  renderToDom(`#uploadContent`, formString);
 }
-
-
 
 const search = (event) => {
   const userInput = event.target.value.toLowerCase();
-  const searchResult = projects.filter(taco =>
-    taco.name.toLowerCase().includes(userInput) ||
-    taco.description.toLowerCase().includes(userInput)
-    )
+  const searchResult = projects.filter(
+    (taco) =>
+      taco.name.toLowerCase().includes(userInput) ||
+      taco.description.toLowerCase().includes(userInput)
+  );
   projectsOnDom(searchResult);
+};
+
+function sortAndRender(taco) {
+    let dataCopy = [...projects];
+    if (taco === newest) {
+
+    }
+    if (taco === oldest) {
+
+    }
+    if (taco === alphabetical) {
+      
+    }
+    function compare(a, b) {
+      if (a.id > b.id) {
+        return -1;
+      }
+      if (a.id < b.id) {
+        return 1;
+      }
+      return 0;
+    }
+    dataCopy.sort(compare);
+    projectsOnDom(dataCopy);
 }
 
 function eventListeners() {
-  document.querySelector('#projectForm').addEventListener('submit', (e) => {
+  document.querySelector("#projectForm").addEventListener("submit", (e) => {
     const timestamp = Math.round(Date.now() / 1000);
     e.preventDefault(); // this goes in EVERY form submit to prevent page reload
-    
     const newProjectObject = {
-      id: 0,
+      id: createId(projects),
       name: document.querySelector("#nameInput").value,
       description: document.querySelector("#descriptionInput").value,
       time: timestamp,
       privateStatus: false,
-    }
+    };
     projects.push(newProjectObject);
-    projectsOnDom(projects)
-    document.querySelector('#projectForm').reset();
-});
-  document.querySelector('#search-field').addEventListener('keyup', search)
+    projectsOnDom(projects);
+    document.querySelector("#projectForm").reset();
+    console.log(newProjectObject)
+  });
+  document.querySelector("#search-field").addEventListener("keyup", search);
+  document.querySelector("#sort").addEventListener("click", (e) => {
+    switch(e.target.id) {
+      case "newest":
+        console.log("newest")
+        break;
+      case "oldest":
+        console.log("oldest")
+        break;
+      case "alphabetical":
+        console.log("alphabetical")
+        break;
+      default:
+        console.log("default")
+    }
+    sortAndRender(e.target.id);
+  });
 }
 
 function startApp() {
@@ -170,4 +210,4 @@ function startApp() {
   //put rest of start up here
 }
 
-startApp()
+startApp();

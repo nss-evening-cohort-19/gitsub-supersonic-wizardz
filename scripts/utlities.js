@@ -97,4 +97,16 @@ function searchSetup() {
   renderToDom(`#searchBar`, searchString)
 }
 
-export { skeletonDomString, renderToDom, searchSetup };
+function createId(array) {
+  if (array.length) {
+    const idArray = [];
+    array.forEach((el) => {
+      idArray.push(el.id);
+    });
+    return Math.max(...idArray) + 1;
+  } else {
+    return 0;
+  }
+};
+
+export { skeletonDomString, renderToDom, searchSetup, createId };
