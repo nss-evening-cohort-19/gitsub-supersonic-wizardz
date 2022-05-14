@@ -1,4 +1,4 @@
-import { skeletonDomString, renderToDom } from "./utlities.js";
+import { skeletonDomString, renderToDom, searchSetup } from "./utlities.js";
 
 //define all your functions here
 const packageData = [
@@ -89,6 +89,14 @@ const newProjectForm = () => {
 renderToDom("#uploadContent", domString);
 }
 
+//--------SEARCH FUNCTION---------//
+
+// const searchBar = (e) => {
+//   const inputValue = e.target.value.toLowerCase();
+//   const results = packageData.filter(result => result.name.toLowerCase().includes(inputValue));
+//   packageOptions(results);
+// };
+
 // -------EVENT LISTENERS------- //
 // FORM SUBMIT
 const packageEventListeners = () => {
@@ -105,7 +113,7 @@ const packageEventListeners = () => {
     details: ""
     }
 
-    packageData.push(newEntryObj);
+    packageData.unshift(newEntryObj);
     packageOptions(packageData);
 
     form.reset();
@@ -120,12 +128,16 @@ const packageEventListeners = () => {
       packageOptions(packageData);
     }
   });
+
+  // SEARCH BAR
+  // document.querySelector("#search-field").addEventListener("keyup", searchBar);
 }
 
 function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
   //put rest of start up here
   newProjectForm();
+  // searchSetup();
   packageOptions(packageData);
   packageEventListeners();
 }
