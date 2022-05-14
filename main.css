@@ -115,3 +115,22 @@ li {
 .product-name {
   flex: 1;
 }
+
+
+
+.mpCard p{
+  margin: 0;
+}
+.details{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.details ul{
+  width: 50%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
