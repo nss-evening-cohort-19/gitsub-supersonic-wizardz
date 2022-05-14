@@ -70,3 +70,10 @@ img{
 .float-right {
   float: right;
 }
+
+/*Projects CSS*/
+.project-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

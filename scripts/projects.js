@@ -3,32 +3,62 @@ import { skeletonDomString, renderToDom, searchSetup } from "./utlities.js";
 let projects = [
   {
     id:0,
-    name: "Test",
-    description: "testing how my data will work",
-    time: 1652224873
+    name: "Pet Adoption",
+    description: "Front end project for the Indian River Humane Society",
+    time: 1652224873,
+    privateStatus: false,
   },
   {
     id:1,
-    name: "Experiment",
-    description: "testing how my data will work, maybe a description will be too long what will happen",
-    time: 1652134873
+    name: "Sorting Hat",
+    description: "Individual project for NSS evening cohort 19, basic CRUD functions",
+    time: 1652134873,
+    privateStatus: false,
   },
   {
     id:2,
-    name: "Foray",
-    description: "testing how my precious data will fail unexpectedly",
-    time: 1652234873
+    name: "Word counter",
+    description: "simple word counter, learning how to target elements on the DOM",
+    time: 1652234873,
+    privateStatus: false,
+  },
+  {
+    id:3,
+    name: "Spanish flashcards",
+    description: "flashcard app for some common regular and irregular verbs",
+    time: 1650234873,
+    privateStatus: true,
+  }
+  ,
+  {
+    id:4,
+    name: "Ear training app",
+    description: "basic relative pitch examples on the client side",
+    time: 1620234873,
+    privateStatus: true,
   }
 ]
 
 function projectsOnDom(taco) {
   const timeStamp = Math.round(Date.now() / 1000);
   let headerString = `<div class="card" style="width: 100%;" class="project-card">
-  <div class="card-header">
-    ${projects.length} Open, 0 closed
+  <div class="card-header project-header">
+    <div>${projects.length} Open ~ 0 closed</div>
+    <div>
+      <div class="dropdown-center">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn">
+          <li><a class="dropdown-item" href="#">by newest activity</a></li>
+          <li><a class="dropdown-item" href="#">by oldest activity</a></li>
+          <li><a class="dropdown-item" href="#">by title ascending</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
   <div id="dataDiv"></div>
-</div>`
+  </div>`
 
   let projectsString = ""
 
@@ -57,15 +87,21 @@ function projectsOnDom(taco) {
         timeUnits = 'days';
       }
     }
+
+    let privateLabel = "";
+    if (project.privateStatus === true) {
+      privateLabel = "private"
+    }
+
     projectsString += `<li class="list-group-item d-flex justify-content-between align-items-center">
-    <small>
+    <small style="width: 25%;">
       <div class="fw-bold">
         ${project.name}
-        <span class="badge bg-primary rounded-pill">private</span>
+        <span class="badge bg-secondary rounded-pill">${privateLabel}</span>
       </div>
-      Created ${timeAgo} ${timeUnits} ago
+      🕓 Updated ${timeAgo} ${timeUnits} ago
     </small>
-    <small class="text-truncate" style="width: 50%;">
+    <small class="text-truncate" style="width: 60%;">
     ${project.description}
     </small>
     <div>
@@ -115,7 +151,8 @@ function eventListeners() {
       id: 0,
       name: document.querySelector("#nameInput").value,
       description: document.querySelector("#descriptionInput").value,
-      time: timestamp
+      time: timestamp,
+      privateStatus: false,
     }
     projects.push(newProjectObject);
     projectsOnDom(projects)
