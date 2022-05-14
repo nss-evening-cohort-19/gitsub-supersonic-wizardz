@@ -67,25 +67,25 @@ const packageOptions = (array) => {
   }
 
 // NEW PACKAGE FORM
-const newProjectForm = () => {
+const addPackageForm = () => {
   const domString = `
   <h4>Add a New Package</h4>
   <form id="packageForm">
     <div class="mb-3">
      <label for="exampleFormControlInput1" class="form-label">New Package Name</label>
      <input type="text" class="form-control" id="name" placeholder="e.g. GuardRails">
-     </div>
+    </div>
     <div class="mb-3">
-     <label for="exampleFormControlInput1" class="form-label">URL of Product's Logo</label>
+     <label for="exampleFormControlInput1" class="form-label">URL of Package's Logo</label>
      <input type="text" class="form-control" id="logo" placeholder="https://avatars.githubusercontent.com/ml/4950?s=140&v=4">
-     </div>
+    </div>
     <div class="mb-3">
-     <label for="exampleFormControlInput1" class="form-label">Description</label>
+     <label for="exampleFormControlInput1" class="form-label">Hook Statement About Package</label>
      <input type="text" class="form-control" id="description" placeholder="Please explain your package's features">
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Full Details of Package</label>
-      <textarea class="form-control" id="details" rows="3"></textarea>
+     <label for="exampleFormControlTextarea1" class="form-label">Full Description of Package</label>
+     <textarea class="form-control" id="details" rows="3"></textarea>
     </div>
     <hr>
     <button class="btn btn-success" type="submit">Add Package</button>
@@ -140,7 +140,7 @@ const packageEventListeners = () => {
 function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
   //put rest of start up here
-  newProjectForm();
+  addPackageForm();
   searchSetup();
   packageOptions(packageData);
   packageEventListeners();
