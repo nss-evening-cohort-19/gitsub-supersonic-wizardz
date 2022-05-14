@@ -75,12 +75,16 @@ const repoCards = () => {
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">${repo.name}</h5>
       <small id="date" class="text-muted">${date}</small>
-      <button id="delete--${repo.id}" type="button" class="text-muted btn btn-danger">X</button>
+      <button id="delete--${
+        repo.id
+      }" type="button" class="text-muted btn btn-danger deleteButton">X</button>
     </div>
     <p class="mb-1">${repo.description}</p>
     <button id="favorite--${repo.id}" type="button" class="btn btn-light">
-    <i id="icon" class="fa-solid fa-heart"></i>
-    <span class="text-muted">Favorite</span>
+    <i id="favorite--${repo.id}"  class="fa-solid fa-heart ${
+      repo.favorite ? "heartRed" : ""
+    }"></i>
+    <span id="favorite--${repo.id}"  class="text-muted">Favorite</span>
     </button>
   </a>
 </div>`;
@@ -109,27 +113,24 @@ const eventlisteners = () => {
     document
       .querySelector("#uploadedContent")
       .addEventListener("click", (e) => {
-        // (e.target.id)
-        console.log("You clicked to favorite");
-        console.log(e.target.id);
         const [method, favoriteCard] = e.target.id.split("--");
-        const idOfCard = repos.find(
+        const idOfCard = repos.findIndex(
           (repository) => repository.id === parseInt(favoriteCard)
         );
+        // console.log(favoriteCard);
         if (e.target.id.includes("favorite")) {
-          idOfCard.favorite = true;
-          console.log(idOfCard.favorite);
+          repos[idOfCard].favorite ^= true;
+          console.log(repos[idOfCard].favorite);
           // document.querySelector("#icon").style.color = "red";
           repoCards(repos);
-        } else {
-          console.log("This didn't work");
+          // console.log("You clicked to favorite");
         }
       });
   };
 
   const deleteBtn = () => {
     document
-      .querySelector("#uploadedContent")
+      .querySelector("#uploadedContent, .deleteButton")
       .addEventListener("click", (e) => {
         if (e.target.id.includes("delete")) {
           const [method, deleteCard] = e.target.id.split("--");
@@ -143,8 +144,8 @@ const eventlisteners = () => {
       });
   };
   formBtn();
-  favoriteBtn();
   deleteBtn();
+  favoriteBtn();
 };
 function startApp() {
   renderToDom("#mainPage", skeletonDomString);
