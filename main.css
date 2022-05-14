@@ -76,6 +76,18 @@ li {
   margin: 5px 0px;
 }
 
+/*Projects CSS*/
+.project-card {
+  width: 100%;
+  align-self: start;
+}
+
+.project-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 /*Package CSS*/
 .uploaded {
   display: flex;
