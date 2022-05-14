@@ -19,7 +19,7 @@ const mpData = [
 const renderTheCards = () => {
   let domString = ``;
   for (const article of mpData) {
-    domString += `<div class="card" style="width: 25rem;">
+    domString += `<div class="card mpCard" style="width: 25rem;">
   <div class="card-body">
     <p class="card-title"><strong>📖 ${article.contentTitle}</strong></p>
     <p class="card-text"><sup>${article.contentDescription}</sup></p>

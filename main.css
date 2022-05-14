@@ -56,7 +56,7 @@ li{
   flex-flow: row wrap;
   overflow: scroll;
 }
-.card{
+.mpCard{
   height: fit-content;
   margin: .5rem;
 }
