@@ -6,7 +6,7 @@ const packageData = [
     id: 1,
     name: "Circle CI",
     logo: "https://avatars.githubusercontent.com/ml/7?s=140&v=4",
-    description: "Automatically build, test. and deploy your project in minutes",
+    description: "Automatically build, test, and deploy your project in minutes",
     details: ""
   },
   {
@@ -51,19 +51,17 @@ const packageData = [
 const packageOptions = (array) => {
   let domString = ""
   for (const item of array) {
-    domString += `<div class="row package-cards">
-     <div class="col-sm-6">
-       <div class="card">
+    domString += `<div class="card w-50">
        <div class="card-body">
-           <button type="button" id="delete--${item.id}" class="btn btn-danger btn-sm float-right">X</button>
-           <img src="${item.logo}" alt="Product's Logo">
-           <h5 class="card-title">${item.name}</h5>
-           <p class="card-text">${item.description}</p>
-           <a href="#" class="btn btn-success">Learn More</a>
-         </div>
+        <button type="button" id="delete--${item.id}" class="btn btn-danger btn-sm float-right">X</button>
+        <div class="container">
+          <img src="${item.logo}" alt="Product's Logo" class="logo-img">
+          <h5 class="card-title product-name">${item.name}</h5>
+        </div>
+        <p class="card-text">${item.description}</p>
+        <a href="#" class="btn btn-success">Learn More</a>
        </div>
-     </div>
-   </div>`
+      </div>`
   }
   renderToDom("#uploadedContent", domString);
   }
