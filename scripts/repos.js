@@ -6,23 +6,27 @@ const repos = [
     name: "random-repo-name",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    favorite: false,
   },
   {
     id: 2,
     name: "adventure-time",
     description:
       "Twelve- year-old Finn battles evil in the Land of Ooo. Assisted by his magical dog, Jake, Finn roams the Land of Ooo righting wrongs and battling evil.",
+    favorite: false,
   },
   {
     id: 3,
     name: "mass-effect",
     description:
       "The franchise depicts a distant future where humanity and several alien civilizations have colonized the known universe using technology left behind by advanced precursor civilizations",
+    favorite: false,
   },
   {
     id: 4,
     name: "fall-out-four",
     description: `In the year 2287, ten years after 210 years after "The Great War", which caused catastrophic nuclear devastation across the United States.`,
+    favorite: false,
   },
 ];
 
@@ -74,7 +78,10 @@ const repoCards = () => {
       <button id="delete--${repo.id}" type="button" class="text-muted btn btn-danger">X</button>
     </div>
     <p class="mb-1">${repo.description}</p>
-    <small class="text-muted">And some small print.</small>
+    <button id="favorite--${repo.id}" type="button" class="btn btn-light">
+    <i id="icon" class="fa-solid fa-heart"></i>
+    <span class="text-muted">Favorite</span>
+    </button>
   </a>
 </div>`;
   }
@@ -90,11 +97,34 @@ const eventlisteners = () => {
         id: repos.length + 1,
         name: document.getElementById("repoName").value,
         description: document.getElementById("formDescription").value,
+        favorite: false,
       };
       console.log(newRepo);
       repos.push(newRepo);
       repoCards(repos);
     });
+  };
+
+  const favoriteBtn = () => {
+    document
+      .querySelector("#uploadedContent")
+      .addEventListener("click", (e) => {
+        // (e.target.id)
+        console.log("You clicked to favorite");
+        console.log(e.target.id);
+        const [method, favoriteCard] = e.target.id.split("--");
+        const idOfCard = repos.find(
+          (repository) => repository.id === parseInt(favoriteCard)
+        );
+        if (e.target.id.includes("favorite")) {
+          idOfCard.favorite = true;
+          console.log(idOfCard.favorite);
+          // document.querySelector("#icon").style.color = "red";
+          repoCards(repos);
+        } else {
+          console.log("This didn't work");
+        }
+      });
   };
 
   const deleteBtn = () => {
@@ -113,6 +143,7 @@ const eventlisteners = () => {
       });
   };
   formBtn();
+  favoriteBtn();
   deleteBtn();
 };
 function startApp() {
