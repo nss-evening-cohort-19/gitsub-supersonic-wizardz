@@ -43,13 +43,22 @@ img{
   flex-flow: column nowrap;
   justify-content: space-between;
 }
+li{
+  list-style: none;
+}
 .head{
   display: flex;
   justify-content: space-between;
 }
 .uploaded{
   height: 40vh;
+  display: flex;
+  flex-flow: row wrap;
   overflow: scroll;
+}
+.mpCard{
+  height: fit-content;
+  margin: .5rem;
 }
 .uploads{
   height: 40vh;
