@@ -89,20 +89,9 @@ li {
 }
 
 /*Package CSS*/
-.uploaded {
-  display: flex;
-  flex-flow: row wrap;
-}
 
 .float-right {
   float: right;
-}
-.heartRed {
-  color: red;
-}
-
-.container {
-  display: flex;
 }
 
 .logo-img {
@@ -115,6 +104,17 @@ li {
 .product-name {
   flex: 1;
 }
+
+
+
+.heartRed {
+  color: red;
+}
+
+.container {
+  display: flex;
+}
+
 
 
 
