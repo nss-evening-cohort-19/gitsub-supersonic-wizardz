@@ -8,9 +8,9 @@ const skeletonDomString = `
         <h4>Mr. Beardly</h4>
         <p>@TheBeardedOne</p>
         <div class = 'btnGroup'>
-          <button type="button" class="btn btn-outline-danger btn-sm">Follow</button>
-          <button type="button" class="btn btn-outline-danger btn-sm">Sponsor</button>
-          <button type="button" class="btn btn-outline-danger btn-sm">...</button>
+          <button type="button" class="btn btn-outline-primary btn-sm">Follow</button>
+          <button type="button" class="btn btn-outline-primary btn-sm">Sponsor</button>
+          <button type="button" class="btn btn-outline-primary btn-sm">...</button>
         </div>
         <ul class='profileDetails'>
           <li>Location</li>
@@ -22,6 +22,7 @@ const skeletonDomString = `
         <div id="rightSideContent" class="rightSide">
           <navbar id="navigation" class="head">
             <nav class="nav">
+            
               <a class="nav-link" href="./index.html">Overview</a>
               <a class="nav-link" href="./repos.html">Repositories</a>
               <a class="nav-link" href="./projects.html">Projects</a>

@@ -42,11 +42,11 @@ let projects = [
 
 function projectsOnDom(taco) {
   const timeStamp = Math.round(Date.now() / 1000);
-  let headerString = `<div class="card" style="width: 100%;" class="project-card">
-  <div class="card-header project-header">
+  let headerString = `<div class="card project-card">
+  <div class="card-header project-header" id="project-header">
     <div>${projects.length} Open ~ 0 closed</div>
-    <div>
-      <div class="dropdown-center">
+    <div id="sort-div">
+      <div class="dropdown-center" id="sort-btn">
         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
         Sort
         </button>
@@ -144,26 +144,44 @@ const search = (event) => {
 
 function sortAndRender(taco) {
     let dataCopy = [...projects];
-    if (taco === newest) {
-
-    }
-    if (taco === oldest) {
-
-    }
-    if (taco === alphabetical) {
-      
-    }
-    function compare(a, b) {
-      if (a.id > b.id) {
+    function newest(a, b) {
+      if (a.time > b.time) {
         return -1;
       }
-      if (a.id < b.id) {
+      if (a.time < b.time) {
         return 1;
       }
       return 0;
     }
-    dataCopy.sort(compare);
+    function oldest(a, b) {
+      if (a.time < b.time) {
+        return -1;
+      }
+      if (a.time > b.time) {
+        return 1;
+      }
+      return 0;
+    }
+    function alphabetical(a, b) {
+      if (a.name.charAt(0) < b.name.charAt(0)) {
+        return -1;
+      }
+      if (a.name.charAt(0) > b.name.charAt(0)) {
+        return 1;
+      }
+      return 0;
+    }
+    if (taco === "newest") {
+      dataCopy.sort(newest);
+    }
+    if (taco === "oldest") {
+      dataCopy.sort(oldest);
+    }
+    if (taco === "alphabetical") {
+      dataCopy.sort(alphabetical);
+    }
     projectsOnDom(dataCopy);
+    eventListeners();
 }
 
 function eventListeners() {
@@ -184,19 +202,6 @@ function eventListeners() {
   });
   document.querySelector("#search-field").addEventListener("keyup", search);
   document.querySelector("#sort").addEventListener("click", (e) => {
-    switch(e.target.id) {
-      case "newest":
-        console.log("newest")
-        break;
-      case "oldest":
-        console.log("oldest")
-        break;
-      case "alphabetical":
-        console.log("alphabetical")
-        break;
-      default:
-        console.log("default")
-    }
     sortAndRender(e.target.id);
   });
 }
@@ -207,7 +212,6 @@ function startApp() {
   searchSetup();
   projectsOnDom(projects);
   eventListeners();
-  //put rest of start up here
 }
 
 startApp();
