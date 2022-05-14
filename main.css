@@ -43,13 +43,22 @@ img {
   flex-flow: column nowrap;
   justify-content: space-between;
 }
+li {
+  list-style: none;
+}
 .head {
   display: flex;
   justify-content: space-between;
 }
 .uploaded {
   height: 40vh;
+  display: flex;
+  flex-flow: row wrap;
   overflow: scroll;
+}
+.mpCard {
+  height: fit-content;
+  margin: 0.5rem;
 }
 .uploads {
   height: 40vh;
@@ -66,10 +75,31 @@ img {
 .searchBar {
   margin: 5px 0px;
 }
+
 /*Package CSS*/
+.uploaded {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .float-right {
   float: right;
 }
 .heartRed {
   color: red;
+}
+
+.container {
+  display: flex;
+}
+
+.logo-img {
+  height: 9%;
+  width: 9%;
+  margin-left: -10px;
+  margin-right: 8px;
+}
+
+.product-name {
+  flex: 1;
 }
