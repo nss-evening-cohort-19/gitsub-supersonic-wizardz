@@ -1,7 +1,7 @@
 import { skeletonDomString, renderToDom } from "./utlities.js";
 
 //define all your functions here
-const packageData = [
+export const packageData = [
   {
     id: 1,
     name: "Circle CI",
@@ -93,16 +93,6 @@ const newProjectForm = () => {
 renderToDom("#uploadContent", domString);
 }
 
-// const learnMore = () => {
-//   const domString = `
-//   <img src="${packageData.logo}" alt="Product's Logo">
-//     <h1>${packageData.name}</h1>
-//     <p id="description">${packageData.description}</p>
-//     <p id="details">${packageData.details}</p>
-//   `;
-//   renderToDom("#learnMoreBtn", domString);
-// }
-
 // -------EVENT LISTENERS------- //
 // FORM SUBMIT
 const packageEventListeners = () => {
@@ -140,7 +130,6 @@ function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
   //put rest of start up here
   newProjectForm();
-  // learnMore();
   packageOptions(packageData);
   packageEventListeners();
 }
