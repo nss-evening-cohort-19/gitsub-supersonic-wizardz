@@ -42,25 +42,6 @@ let projects = [
 
 function projectsOnDom(taco) {
   const timeStamp = Math.round(Date.now() / 1000);
-  let headerString = `<div class="card project-card">
-  <div class="card-header project-header" id="project-header">
-    <div>${projects.length} Open ~ 0 closed</div>
-    <div id="sort-div">
-      <div class="dropdown-center" id="sort-btn">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
-        Sort
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn" id="sort">
-          <li><a class="dropdown-item" href="#" id="newest">by newest activity</a></li>
-          <li><a class="dropdown-item" href="#" id="oldest">by oldest activity</a></li>
-          <li><a class="dropdown-item" href="#" id="alphabetical">by title ascending</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div id="dataDiv"></div>
-  </div>`;
-
   let projectsString = "";
 
   for (const project of taco) {
@@ -110,8 +91,30 @@ function projectsOnDom(taco) {
     </div>
   </li>`;
   }
-  renderToDom(`#uploadedContent`, headerString);
+  renderToDom("#tallies", `${projects.length} Open ~ 0 closed`)
   renderToDom("#dataDiv", projectsString);
+}
+
+function projectHeaderSetup() {
+  let headerString = `<div class="card project-card">
+  <div class="card-header project-header" id="project-header">
+    <div id="tallies">${projects.length} Open ~ 0 closed</div>
+    <div id="sort-div">
+      <div class="dropdown-center" id="sort-btn">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn" id="sort">
+          <li><a class="dropdown-item" href="#" id="newest">by newest activity</a></li>
+          <li><a class="dropdown-item" href="#" id="oldest">by oldest activity</a></li>
+          <li><a class="dropdown-item" href="#" id="alphabetical">by title ascending</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="dataDiv"></div>
+  </div>`;
+  renderToDom(`#uploadedContent`, headerString);
 }
 
 function formSetup() {
@@ -181,7 +184,6 @@ function sortAndRender(taco) {
       dataCopy.sort(alphabetical);
     }
     projectsOnDom(dataCopy);
-    eventListeners();
 }
 
 function eventListeners() {
@@ -208,6 +210,7 @@ function eventListeners() {
 
 function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
+  projectHeaderSetup();
   formSetup();
   searchSetup();
   projectsOnDom(projects);
