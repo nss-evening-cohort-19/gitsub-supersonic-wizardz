@@ -7,42 +7,42 @@ export const packageData = [
     name: "Circle CI",
     logo: "https://avatars.githubusercontent.com/ml/7?s=140&v=4",
     description: "Automatically build, test, and deploy your project in minutes",
-    details: ""
+    details: "You are the coolest cat in the world"
   },
   {
     id: 2,
     name: "CodeFactor",
     logo: "https://avatars.githubusercontent.com/ml/704?s=140&v=4",
     description: "Automated code review for GitHub",
-    details: ""
+    details: "You are the coolest cat in the world"
   },
   {
     id: 3,
     name: "PullRequest",
     logo: "https://avatars.githubusercontent.com/ml/437?s=140&v=4",
     description: "Expert On-Demand Code Review as a Service",
-    details: ""
+    details: "You are the coolest cat in the world"
   },
   {
     id: 4,
     name: "BuildPulse",
     logo: "https://avatars.githubusercontent.com/ml/4950?s=140&v=4",
     description: "Automatically detect, track, and rank flaky tests so you can regain trust in your test suite",
-    details: ""
+    details: "You are the coolest cat in the world"
   },
   {
     id: 5,
     name: "GuardRails",
     logo: "https://avatars.githubusercontent.com/ml/2860?s=140&v=4",
     description: "GuardRails provides continuous security feedback for modern development teams",
-    details: ""
+    details: "You are the coolest cat in the world"
   }, 
   {
     id: 6,
     name: "CommitCheck",
     logo: "https://avatars.githubusercontent.com/ml/4693?s=140&v=4",
     description: "CommitCheck ensures your commit messages are consistent and contain all required information",
-    details: ""
+    details: "You are the coolest cat in the world"
   }
 ]
 
@@ -53,18 +53,19 @@ const packageOptions = (array) => {
   for (const item of array) {
     domString += `<div class="card w-50">
        <div class="card-body">
-        <button type="button" id="delete--${item.id}" class="btn btn-danger btn-sm float-right">X</button>
+        <button type="button" id="delete--${item.id}" class="btn btn-danger btn-sm delete-btn">X</button>
         <div class="container">
           <img src="${item.logo}" alt="Product's Logo" class="logo-img">
           <h5 class="card-title product-name">${item.name}</h5>
         </div>
         <p class="card-text">${item.description}</p>
-        <a href="./packagesLearnMore.html" class="btn btn-primary">Learn More</a>
+        <p id="learnMore" class="hidden">${item.details}</p>
+        <button type="button" id="learnMoreBtn" class="btn btn-primary">Read More</button>
        </div>
       </div>`
-  }
+  };
   renderToDom("#uploadedContent", domString);
-  }
+  };
 
 // NEW PACKAGE FORM
 const newProjectForm = () => {
@@ -94,7 +95,6 @@ renderToDom("#uploadContent", domString);
 }
 
 // -------EVENT LISTENERS------- //
-// FORM SUBMIT
 const packageEventListeners = () => {
   // LOGIC FOR FORM SUBMIT
   const form = document.querySelector("form");
@@ -106,7 +106,7 @@ const packageEventListeners = () => {
     name: document.querySelector("#name").value,
     logo: document.querySelector("#logo").value,
     description: document.querySelector("#description").value,
-    details: ""
+    details: document.querySelector("#details").value,
     }
 
     packageData.push(newEntryObj);
@@ -116,13 +116,31 @@ const packageEventListeners = () => {
   });
   
   // DELETE BUTTON ON CARD
-  document.querySelector("#uploadedContent").addEventListener("click", (e) => {
+  document.querySelector("#uploadedContent, .delete-btn").addEventListener("click", (e) => {
     if (e.target.id.includes("delete")) {
       const [method, id] = e.target.id.split("--");
       const deleted = packageData.findIndex(pkg => pkg.id === parseInt(id));
       packageData.splice(deleted, 1);
       packageOptions(packageData);
-    }
+    };
+  });
+
+  // LEARN MORE BTN CLICK
+  // document.querySelector("#uploadedContent, .hidden").addEventListener("click", (e) => {
+  //   console.log(e.target.id);
+  //   if (e.target.id.includes("learnMoreBtn")) {
+  //     const learnMore = document.querySelector(`#learnMore--${packageData.id}`);
+  //     console.log(learnMore);
+  //     // learnMore.classList.toggle("hidden");  //   //   const learnMore = packageData.find(pkg => pkg.id === parseInt(id));
+  // //   //   console.log(learnMore);
+  // //   //   learnMore.classList.toggle("hidden");
+  //   };
+  // });
+  
+  const learnMore = document.querySelector("#learnMore");
+  const learnMoreBtn = document.querySelector("#learnMoreBtn");
+  learnMoreBtn.addEventListener("click", () => {
+    learnMore.classList.toggle("hidden");
   });
 }
 
@@ -130,6 +148,7 @@ function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
   //put rest of start up here
   newProjectForm();
+  // learnMoreBtn();
   packageOptions(packageData);
   packageEventListeners();
 }

@@ -94,9 +94,14 @@ li {
   flex-flow: row wrap;
 }
 
-.float-right {
+.delete-btn {
   float: right;
 }
+
+.hidden {
+  display: none;
+}
+
 .heartRed {
   color: red;
 }

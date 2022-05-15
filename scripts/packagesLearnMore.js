@@ -1,11 +1,13 @@
 import packageData from "./packages.js"
 
-export const learnMore = (thePackage) => {
+export const learnMore = () => {
   const domString = `
-  <img src="${thePackage.logo}" alt="Product's Logo">
-    <h1>${thePackage.name}</h1>
-    <p id="description">${thePackage.description}</p>
-    <p id="details">${thePackage.details}</p>
+  <div>
+  <img src="${packageData.logo}" alt="Product's Logo">
+    <h1>${packageData.name}</h1>
+    <p id="description">${packageData.description}</p>
+    <p id="details">${packageData.details}</p>
+  </div>
   `;
   renderToDom("#learnMoreBtn", domString);
 }
