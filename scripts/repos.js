@@ -61,7 +61,7 @@ const newRepoForm = () => {
 };
 
 const title = () => {
-  const domString = `<h3>Repositories</h3>`;
+  const domString = `<div class="d-flex w-100 justify-content-between""><h3>Repositories</h3><buttontype="button" id="favoriteSort" class="btn btn-light"><i class="fa-solid fa-heart"></i></buttontype=></div>`;
   renderToDom("#titleDiv", domString);
 };
 

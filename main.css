@@ -115,3 +115,7 @@ li {
 .product-name {
   flex: 1;
 }
+#favoriteSort:hover {
+  color: red;
+  background-color: grey;
+}
