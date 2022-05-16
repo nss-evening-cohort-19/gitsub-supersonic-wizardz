@@ -58,7 +58,8 @@ li {
 }
 .mpCard {
   height: fit-content;
-  margin: 0.5rem;
+  margin: 2px;
+  width: 25rem;
 }
 .uploads {
   height: 40vh;
@@ -121,11 +122,12 @@ li {
   color: red;
 }
 
-.container {
+.mpUploaded{
   display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
 }
-
-.mpCard p {
+.mpCard p{
   margin: 0;
 }
 .details {
@@ -145,4 +147,8 @@ li {
 #favorite:hover {
   color: red;
   background-color: grey;
+}
+
+a{
+  text-decoration: none;
 }

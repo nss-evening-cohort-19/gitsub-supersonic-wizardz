@@ -32,8 +32,8 @@ const mpData = [
     favorite: false,
     details: {
       fileType: 'HTML',
-      starred: 99,
-      forked: 4,
+      starred: 34,
+      forked: 9,
     }
   },
   {
@@ -48,11 +48,24 @@ const mpData = [
     }
   },
 ];
+const renderTheAbout = () => {
+  let domString = `
+  <h3>Hi, I'm Mr. Beardly👋 👨‍💻</h3>
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore non dolorum adipisci, deserunt aliquam facilis at veniam perferendis excepturi molestias dolores doloribus molestiae temporibus debitis veritatis quia ullam error assumenda?</p>
+  <h4>Find Me 🌎:</h4>
+  <ul>
+  <li>Learning in public on <a href="https://github.com/">Github</a></li>
+  <li>Tinkering with interactions on <a href="https://codepen.io/">Codepen</a></li>
+  <li>Sharing updates on <a href="https://www.linkedin.com/">LinkedIn</a></li>
+  </ul>
+  `;
+  renderToDom('#titleDiv', domString);
+};
 
 const renderTheCards = () => {
   let domString = ``;
   for (const article of mpData) {
-    domString += `<div class="card mpCard" style="width: 25rem;">
+    domString += `<div class="card mpCard">
   <div class="card-body">
     <p class="card-title"><i class="fa-solid fa-book"></i> <strong>${article.contentTitle}</strong></p>
     <p class="card-text"><sup>${article.contentDescription}</sup></p>
@@ -130,6 +143,7 @@ const eventListeners = () => {
 function startApp() {
   renderToDom("#mainPage", skeletonDomString);
   //put rest of start up here
+  renderTheAbout();
   renderTheCards();
   renderTheForm();
   eventListeners();
