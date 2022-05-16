@@ -1,4 +1,4 @@
-import { skeletonDomString, renderToDom } from "./utlities.js";
+import { skeletonDomString, renderToDom, searchSetup } from "./utlities.js";
 
 //define all your functions here
 const packageData = [
@@ -59,7 +59,7 @@ const packageOptions = (array) => {
           <h5 class="card-title product-name">${item.name}</h5>
         </div>
         <p class="card-text">${item.description}</p>
-        <a href="#" class="btn btn-success">Learn More</a>
+        <a href="#" class="btn btn-primary">Learn More</a>
        </div>
       </div>`
   }
@@ -67,21 +67,25 @@ const packageOptions = (array) => {
   }
 
 // NEW PACKAGE FORM
-const newProjectForm = () => {
+const addPackageForm = () => {
   const domString = `
   <h4>Add a New Package</h4>
-  <form>
+  <form id="packageForm">
     <div class="mb-3">
      <label for="exampleFormControlInput1" class="form-label">New Package Name</label>
      <input type="text" class="form-control" id="name" placeholder="e.g. GuardRails">
-     </div>
+    </div>
     <div class="mb-3">
-     <label for="exampleFormControlInput1" class="form-label">URL of Product's Logo</label>
+     <label for="exampleFormControlInput1" class="form-label">URL of Package's Logo</label>
      <input type="text" class="form-control" id="logo" placeholder="https://avatars.githubusercontent.com/ml/4950?s=140&v=4">
-     </div>
+    </div>
     <div class="mb-3">
-     <label for="exampleFormControlInput1" class="form-label">Description</label>
+     <label for="exampleFormControlInput1" class="form-label">Hook Statement About Package</label>
      <input type="text" class="form-control" id="description" placeholder="Please explain your package's features">
+    </div>
+    <div class="mb-3">
+     <label for="exampleFormControlTextarea1" class="form-label">Full Description of Package</label>
+     <textarea class="form-control" id="details" rows="3"></textarea>
     </div>
     <hr>
     <button class="btn btn-success" type="submit">Add Package</button>
@@ -89,11 +93,19 @@ const newProjectForm = () => {
 renderToDom("#uploadContent", domString);
 }
 
+// --------SEARCH FUNCTION---------//
+
+const searchBar = (e) => {
+  const inputValue = e.target.value.toLowerCase();
+  const results = packageData.filter(result => result.name.toLowerCase().includes(inputValue));
+  packageOptions(results);
+};
+
 // -------EVENT LISTENERS------- //
 // FORM SUBMIT
 const packageEventListeners = () => {
   // LOGIC FOR FORM SUBMIT
-  const form = document.querySelector("form");
+  const form = document.querySelector("#packageForm");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -105,7 +117,7 @@ const packageEventListeners = () => {
     details: ""
     }
 
-    packageData.push(newEntryObj);
+    packageData.unshift(newEntryObj);
     packageOptions(packageData);
 
     form.reset();
@@ -120,12 +132,16 @@ const packageEventListeners = () => {
       packageOptions(packageData);
     }
   });
+
+  // SEARCH BAR
+  document.querySelector("#search-field").addEventListener("keyup", searchBar);
 }
 
 function startApp() {
   renderToDom(`#mainPage`, skeletonDomString);
   //put rest of start up here
-  newProjectForm();
+  addPackageForm();
+  searchSetup();
   packageOptions(packageData);
   packageEventListeners();
 }
