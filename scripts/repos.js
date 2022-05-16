@@ -7,6 +7,12 @@ const repos = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     favorite: false,
+    contributors: [
+      { username: "scamp925", commits: 19, comments: 12, branches: 13 },
+      { username: "shalane-proctor", commits: 25, comments: 5, branches: 10 },
+      { username: "PennCreative", commits: 26, comments: 9, branches: 17 },
+      { username: "patrick24cr", commits: 29, comments: 7, branches: 9 },
+    ],
   },
   {
     id: 2,
@@ -14,6 +20,12 @@ const repos = [
     description:
       "Twelve- year-old Finn battles evil in the Land of Ooo. Assisted by his magical dog, Jake, Finn roams the Land of Ooo righting wrongs and battling evil.",
     favorite: false,
+    contributors: [
+      { username: "shalane-proctor", commits: 22, comments: 9, branches: 12 },
+      { username: "patrick24cr", commits: 17, comments: 3, branches: 13 },
+      { username: "drteresavasquez", commits: 19, comments: 13, branches: 16 },
+      { username: "PennCreative", commits: 23, comments: 15, branches: 25 },
+    ],
   },
   {
     id: 3,
@@ -21,12 +33,24 @@ const repos = [
     description:
       "The franchise depicts a distant future where humanity and several alien civilizations have colonized the known universe using technology left behind by advanced precursor civilizations",
     favorite: false,
+    contributors: [
+      { username: "drteresavasquez", commits: 21, comments: 13, branches: 41 },
+      { username: "shalane-proctor", commits: 25, comments: 5, branches: 10 },
+      { username: "scamp925", commits: 38, comments: 6, branches: 9 },
+      { username: "patrick24cr", commits: 16, comments: 0, branches: 14 },
+    ],
   },
   {
     id: 4,
     name: "fall-out-four",
     description: `In the year 2287, ten years after 210 years after "The Great War", which caused catastrophic nuclear devastation across the United States.`,
     favorite: false,
+    contributors: [
+      { username: "drteresavasquez", commits: 50, comments: 21, branches: 32 },
+      { username: "PennCreative", commits: 30, comments: 8, branches: 10 },
+      { username: "scamp925", commits: 45, comments: 16, branches: 18 },
+      { username: "patrick24cr", commits: 19, comments: 0, branches: 22 },
+    ],
   },
 ];
 
@@ -52,7 +76,21 @@ const newRepoForm = () => {
       type="text"></input>
     <label for="formDescription">Description</label>
   </div>
-  
+<h6 style="text-align: center; margin: 20px;">Contributors</h6>
+  <div class="row g-4">
+  <div class="col-sm">
+    <input id="username0" type="text" class="form-control" placeholder="UserName" "required">
+  </div>
+  <div class="col-sm">
+    <input id="username1" type="text" class="form-control" placeholder="UserName" "required">
+  </div>
+  <div class="col-sm">
+    <input id="username2" type="text" class="form-control" placeholder="UserName" "required">
+  </div>
+  <div class="col-sm">
+    <input id="username3" type="text" class="form-control" placeholder="UserName" "required">
+  </div>
+</div>
   <hr>
   <button type="submit" class="btn btn-primary">Create Repository</button>
   </form>
@@ -88,6 +126,13 @@ const repoCards = (array) => {
       }" type="button" class="text-muted btn btn-danger deleteButton">X</button>
     </div>
     <p class="card-text">${repo.description}</p>
+    <p class="text-muted">Contributors: 
+    <small class="text-muted">${repo.contributors[0].username}  </small>
+    <small class="text-muted">${repo.contributors[1].username}  </small>
+    <small class="text-muted">${repo.contributors[2].username}  </small>
+    <small class="text-muted">${repo.contributors[3].username}</small>
+    </p>
+    
     <button id="favorite--${repo.id}" type="button" class="btn btn-light">
     <i id="favorite--${repo.id}"  class="fa-solid fa-heart ${
       repo.favorite ? "heartRed" : ""
@@ -120,6 +165,32 @@ const eventlisteners = () => {
         name: document.getElementById("repoName").value,
         description: document.getElementById("formDescription").value,
         favorite: false,
+        contributors: [
+          {
+            username: document.getElementById("username0").value,
+            commits: Math.floor(Math.random() * 50),
+            comments: Math.floor(Math.random() * 50),
+            branches: Math.floor(Math.random() * 50),
+          },
+          {
+            username: document.getElementById("username1").value,
+            commits: Math.floor(Math.random() * 50),
+            comments: Math.floor(Math.random() * 50),
+            branches: Math.floor(Math.random() * 50),
+          },
+          {
+            username: document.getElementById("username2").value,
+            commits: Math.floor(Math.random() * 50),
+            comments: Math.floor(Math.random() * 50),
+            branches: Math.floor(Math.random() * 50),
+          },
+          {
+            username: document.getElementById("username3").value,
+            commits: Math.floor(Math.random() * 50),
+            comments: Math.floor(Math.random() * 50),
+            branches: Math.floor(Math.random() * 50),
+          },
+        ],
       };
       console.log(newRepo);
       repos.push(newRepo);
