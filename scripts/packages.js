@@ -59,8 +59,8 @@ const packageOptions = (array) => {
           <h5 class="card-title product-name">${item.name}</h5>
         </div>
         <p class="card-text">${item.description}</p>
-        <p id="learnMore--${item.id}" class="hidden">${item.details}</p>
-        <button type="button" id="learnMoreBtn--${item.id}" class="btn btn-primary">Read More</button>
+        <p id="readMore--${item.id}" class="hidden">${item.details}</p>
+        <button type="button" id="readMoreBtn--${item.id}" class="btn btn-primary">Read More</button>
        </div>
       </div>`
   };
@@ -133,12 +133,12 @@ const packageEventListeners = () => {
     };
   });
 
-  // LEARN MORE BTN CLICK
+  // READ MORE BTN CLICK
   document.querySelector("#uploadedContent").addEventListener("click", (e) => {
     console.log(e.target.id);
-    if (e.target.id.includes("learnMoreBtn")) {
+    if (e.target.id.includes("readMoreBtn")) {
       const [method, id] = e.target.id.split("--");
-      const learnMore = document.querySelector(`#learnMore--${id}`);
+      const learnMore = document.querySelector(`#readMore--${id}`);
       learnMore.classList.toggle("hidden");
       e.target.textContent === "Read More" 
       ? e.target.textContent = "Read Less"
