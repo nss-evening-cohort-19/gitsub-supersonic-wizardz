@@ -32,8 +32,8 @@ const mpData = [
     favorite: false,
     details: {
       fileType: 'HTML',
-      starred: 99,
-      forked: 4,
+      starred: 34,
+      forked: 9,
     }
   },
   {
@@ -52,7 +52,7 @@ const mpData = [
 const renderTheCards = () => {
   let domString = ``;
   for (const article of mpData) {
-    domString += `<div class="card mpCard" style="width: 25rem;">
+    domString += `<div class="card mpCard">
   <div class="card-body">
     <p class="card-title"><i class="fa-solid fa-book"></i> <strong>${article.contentTitle}</strong></p>
     <p class="card-text"><sup>${article.contentDescription}</sup></p>

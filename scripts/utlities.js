@@ -31,7 +31,7 @@ const skeletonDomString = `
           </navbar>
           <div id="titleDiv"></div>
           <div id="searchBar" class="searchBar"></div>
-          <div id="uploadedContent" class="uploaded">
+          <div id="uploadedContent" class="uploaded mpUploaded">
             <!-- This is where your rendered content goes -->
           </div>
           <div id="uploadContent" class="uploads">

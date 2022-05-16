@@ -58,7 +58,8 @@ li {
 }
 .mpCard {
   height: fit-content;
-  margin: 0.5rem;
+  margin: 2px;
+  width: 25rem;
 }
 .uploads {
   height: 40vh;
@@ -117,7 +118,9 @@ li {
 }
 
 
-
+.mpUploaded{
+  
+}
 .mpCard p{
   margin: 0;
 }
