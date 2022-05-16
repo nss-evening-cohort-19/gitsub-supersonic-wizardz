@@ -105,8 +105,6 @@ li {
   flex: 1;
 }
 
-
-
 .heartRed {
   color: red;
 }
@@ -115,22 +113,24 @@ li {
   display: flex;
 }
 
-
-
-
-.mpCard p{
+.mpCard p {
   margin: 0;
 }
-.details{
+.details {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-.details ul{
+.details ul {
   width: 50%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   margin: 0;
   padding: 0;
+}
+
+#favorite:hover {
+  color: red;
+  background-color: grey;
 }
