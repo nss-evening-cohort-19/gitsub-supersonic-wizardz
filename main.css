@@ -90,8 +90,20 @@ li {
 
 /*Package CSS*/
 
-.float-right {
+.delete-btn {
   float: right;
+}
+
+.hidden {
+  display: none;
+}
+
+.heartRed {
+  color: red;
+}
+
+.container {
+  display: flex;
 }
 
 .logo-img {
