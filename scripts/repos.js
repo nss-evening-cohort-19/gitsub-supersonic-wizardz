@@ -1,4 +1,4 @@
-import { skeletonDomString, renderToDom } from "./utlities.js";
+import { skeletonDomString, renderToDom, searchSetup } from "./utlities.js";
 
 const repos = [
   {
@@ -33,7 +33,7 @@ const repos = [
 //define all your functions here
 const newRepoForm = () => {
   const domString = `<h3>Create a new repository</h3>
-  <form>
+  <form id="spCreate">
   <div class="form-floating">
     <input
       class="form-control"
@@ -61,40 +61,58 @@ const newRepoForm = () => {
 };
 
 const title = () => {
-  const domString = `<h3>Repositories</h3>`;
+  const domString = `<div class="d-flex w-100 justify-content-between"">
+  <h3>Repositories</h3>
+    <div id="filterContainer">
+      <button type="button" class="btn btn-light" id="favorite">
+        <i id="favorite" class="fa-solid fa-heart"></i>
+      </button>
+      <button type="button" class="btn btn-light" id="all">All</button>
+    </div>
+  </div>`;
   renderToDom("#titleDiv", domString);
 };
 
-const repoCards = () => {
+const repoCards = (array) => {
   let domString = "";
   let date = new Date().toLocaleDateString();
-  for (const repo of repos) {
+  for (const repo of array) {
     domString += `
-    <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action aria-current="true">
+    <div id="repoCardContainer" class="card w-100">
+  <div class="card-body">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">${repo.name}</h5>
+      <h5 class="card-title">${repo.name}</h5>
       <small id="date" class="text-muted">${date}</small>
       <button id="delete--${
         repo.id
       }" type="button" class="text-muted btn btn-danger deleteButton">X</button>
     </div>
-    <p class="mb-1">${repo.description}</p>
+    <p class="card-text">${repo.description}</p>
     <button id="favorite--${repo.id}" type="button" class="btn btn-light">
     <i id="favorite--${repo.id}"  class="fa-solid fa-heart ${
       repo.favorite ? "heartRed" : ""
     }"></i>
     <span id="favorite--${repo.id}"  class="text-muted">Favorite</span>
     </button>
-  </a>
+  </div>
 </div>`;
   }
   renderToDom("#uploadedContent", domString);
 };
 
+const search = (e) => {
+  const userInput = e.target.value.toLowerCase();
+  const searchResult = repos.filter(
+    (repo) =>
+      repo.name.toLowerCase().includes(userInput) ||
+      repo.description.toLowerCase().includes(userInput)
+  );
+  repoCards(searchResult);
+};
+
 const eventlisteners = () => {
   const formBtn = () => {
-    const form = document.querySelector("form");
+    const form = document.querySelector("#spCreate");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       let newRepo = {
@@ -106,8 +124,11 @@ const eventlisteners = () => {
       console.log(newRepo);
       repos.push(newRepo);
       repoCards(repos);
+      form.reset();
     });
   };
+
+  document.querySelector("#search-field").addEventListener("keyup", search);
 
   const favoriteBtn = () => {
     document
@@ -124,6 +145,20 @@ const eventlisteners = () => {
           // document.querySelector("#icon").style.color = "red";
           repoCards(repos);
           // console.log("You clicked to favorite");
+        }
+      });
+  };
+
+  const favoriteFilter = () => {
+    document
+      .querySelector("#filterContainer")
+      .addEventListener("click", (e) => {
+        if (e.target.id === "favorite") {
+          const favs = repos.filter((repo) => repo.favorite === 1);
+          repoCards(favs);
+        } else if (e.target.id === "all") {
+          console.log("clicked");
+          repoCards(repos);
         }
       });
   };
@@ -146,12 +181,14 @@ const eventlisteners = () => {
   formBtn();
   deleteBtn();
   favoriteBtn();
+  favoriteFilter();
 };
 function startApp() {
   renderToDom("#mainPage", skeletonDomString);
   newRepoForm();
   title();
-  repoCards();
+  repoCards(repos);
+  searchSetup();
   eventlisteners();
   //put rest of start up here
 }

@@ -9,14 +9,14 @@ const skeletonDomString = `
         <p>@TheBeardedOne</p>
         <div class = 'btnGroup'>
           <button type="button" class="btn btn-outline-primary btn-sm">Follow</button>
-          <button type="button" class="btn btn-outline-primary btn-sm">Sponsor</button>
+          <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa-regular fa-heart"></i> Sponsor</button>
           <button type="button" class="btn btn-outline-primary btn-sm">...</button>
         </div>
         <ul class='profileDetails'>
-          <li>Location</li>
-          <li>Personal Email</li>
-          <li>Twitter Link</li>
-          <li>Github Profile</li>
+          <li><a href="https://goo.gl/maps/HRKSD9UZ9XCZTczX6">Nashville, TN</a></li>
+          <li><a href="https://www.awwwards.com/">Personal Site</li>
+          <li><a href="https://www.twitter.com/">My Tweets</a></li>
+          <li><a href="https://github.com/">My Github Profile</a></li>
         </ul>
         </div>
         <div id="rightSideContent" class="rightSide">

@@ -90,20 +90,9 @@ li {
 }
 
 /*Package CSS*/
-.uploaded {
-  display: flex;
-  flex-flow: row wrap;
-}
 
 .float-right {
   float: right;
-}
-.heartRed {
-  color: red;
-}
-
-.container {
-  display: flex;
 }
 
 .logo-img {
@@ -117,23 +106,37 @@ li {
   flex: 1;
 }
 
+.heartRed {
+  color: red;
+}
 
 .mpUploaded{
-  
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
 }
 .mpCard p{
   margin: 0;
 }
-.details{
+.details {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-.details ul{
+.details ul {
   width: 50%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   margin: 0;
   padding: 0;
+}
+
+#favorite:hover {
+  color: red;
+  background-color: grey;
+}
+
+a{
+  text-decoration: none;
 }
