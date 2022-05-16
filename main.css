@@ -89,10 +89,6 @@ li {
 }
 
 /*Package CSS*/
-.uploaded {
-  display: flex;
-  flex-flow: row wrap;
-}
 
 .delete-btn {
   float: right;
@@ -119,4 +115,34 @@ li {
 
 .product-name {
   flex: 1;
+}
+
+
+
+.heartRed {
+  color: red;
+}
+
+.container {
+  display: flex;
+}
+
+
+
+
+.mpCard p{
+  margin: 0;
+}
+.details{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.details ul{
+  width: 50%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
 }

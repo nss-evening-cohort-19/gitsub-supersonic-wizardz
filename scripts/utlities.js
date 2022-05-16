@@ -23,10 +23,10 @@ const skeletonDomString = `
           <navbar id="navigation" class="head">
             <nav class="nav">
             
-              <a class="nav-link" href="./index.html">Overview</a>
-              <a class="nav-link" href="./repos.html">Repositories</a>
-              <a class="nav-link" href="./projects.html">Projects</a>
-              <a class="nav-link" href="./packages.html">Packages</a>
+              <a class="nav-link" href="./index.html"><i class="fa-solid fa-book-open"></i> Overview</a>
+              <a class="nav-link" href="./repos.html"><i class="fa-solid fa-book-bookmark"></i> Repositories</a>
+              <a class="nav-link" href="./projects.html"><i class="fa-solid fa-chart-bar"></i> Projects</a>
+              <a class="nav-link" href="./packages.html"><i class="fa-solid fa-box-open"></i> Packages</a>
             </nav>
           </navbar>
           <div id="titleDiv"></div>
