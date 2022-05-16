@@ -113,15 +113,15 @@ li {
   display: flex;
 }
 
-.mpCard p{
+.mpCard p {
   margin: 0;
 }
-.details{
+.details {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-.details ul{
+.details ul {
   width: 50%;
   display: flex;
   flex-flow: row nowrap;
@@ -133,3 +133,4 @@ li {
 #favorite:hover {
   color: red;
   background-color: grey;
+}
