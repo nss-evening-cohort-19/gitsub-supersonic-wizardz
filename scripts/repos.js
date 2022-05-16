@@ -8,10 +8,10 @@ const repos = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     favorite: false,
     contributors: [
+      { username: "scamp925", commits: 19, comments: 12, branches: 13 },
       { username: "shalane-proctor", commits: 25, comments: 5, branches: 10 },
       { username: "PennCreative", commits: 26, comments: 9, branches: 17 },
       { username: "patrick24cr", commits: 29, comments: 7, branches: 9 },
-      { username: "scamp925", commits: 19, comments: 12, branches: 13 },
     ],
   },
   {
@@ -23,6 +23,8 @@ const repos = [
     contributors: [
       { username: "shalane-proctor", commits: 22, comments: 9, branches: 12 },
       { username: "patrick24cr", commits: 17, comments: 3, branches: 13 },
+      { username: "drteresavasquez", commits: 19, comments: 13, branches: 16 },
+      { username: "PennCreative", commits: 23, comments: 15, branches: 25 },
     ],
   },
   {
@@ -32,6 +34,7 @@ const repos = [
       "The franchise depicts a distant future where humanity and several alien civilizations have colonized the known universe using technology left behind by advanced precursor civilizations",
     favorite: false,
     contributors: [
+      { username: "drteresavasquez", commits: 21, comments: 13, branches: 41 },
       { username: "shalane-proctor", commits: 25, comments: 5, branches: 10 },
       { username: "scamp925", commits: 38, comments: 6, branches: 9 },
       { username: "patrick24cr", commits: 16, comments: 0, branches: 14 },
@@ -45,6 +48,8 @@ const repos = [
     contributors: [
       { username: "drteresavasquez", commits: 50, comments: 21, branches: 32 },
       { username: "PennCreative", commits: 30, comments: 8, branches: 10 },
+      { username: "scamp925", commits: 45, comments: 16, branches: 18 },
+      { username: "patrick24cr", commits: 19, comments: 0, branches: 22 },
     ],
   },
 ];
@@ -74,16 +79,16 @@ const newRepoForm = () => {
 <h6 style="text-align: center; margin: 20px;">Contributors</h6>
   <div class="row g-4">
   <div class="col-sm">
-    <input id="username0" type="text" class="form-control" placeholder="UserName">
+    <input id="username0" type="text" class="form-control" placeholder="UserName" "required">
   </div>
   <div class="col-sm">
-    <input id="username1" type="text" class="form-control" placeholder="UserName">
+    <input id="username1" type="text" class="form-control" placeholder="UserName" "required">
   </div>
   <div class="col-sm">
-    <input id="username2" type="text" class="form-control" placeholder="UserName">
+    <input id="username2" type="text" class="form-control" placeholder="UserName" "required">
   </div>
   <div class="col-sm">
-    <input id="username3" type="text" class="form-control" placeholder="UserName">
+    <input id="username3" type="text" class="form-control" placeholder="UserName" "required">
   </div>
 </div>
   <hr>
@@ -121,10 +126,11 @@ const repoCards = (array) => {
       }" type="button" class="text-muted btn btn-danger deleteButton">X</button>
     </div>
     <p class="card-text">${repo.description}</p>
-    <p class="text-muted">Contributors: <small id="date" class="text-muted">${
-      repo.contributors[0].username
-    },</small>
-    <small id="date" class="text-muted">${repo.contributors[1].username}</small>
+    <p class="text-muted">Contributors: 
+    <small class="text-muted">${repo.contributors[0].username}  </small>
+    <small class="text-muted">${repo.contributors[1].username}  </small>
+    <small class="text-muted">${repo.contributors[2].username}  </small>
+    <small class="text-muted">${repo.contributors[3].username}</small>
     </p>
     
     <button id="favorite--${repo.id}" type="button" class="btn btn-light">
@@ -168,6 +174,18 @@ const eventlisteners = () => {
           },
           {
             username: document.getElementById("username1").value,
+            commits: Math.floor(Math.random() * 50),
+            comments: Math.floor(Math.random() * 50),
+            branches: Math.floor(Math.random() * 50),
+          },
+          {
+            username: document.getElementById("username2").value,
+            commits: Math.floor(Math.random() * 50),
+            comments: Math.floor(Math.random() * 50),
+            branches: Math.floor(Math.random() * 50),
+          },
+          {
+            username: document.getElementById("username3").value,
             commits: Math.floor(Math.random() * 50),
             comments: Math.floor(Math.random() * 50),
             branches: Math.floor(Math.random() * 50),
