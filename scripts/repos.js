@@ -86,8 +86,6 @@ const newRepoForm = () => {
     <input id="username3" type="text" class="form-control" placeholder="UserName">
   </div>
 </div>
-
-  
   <hr>
   <button type="submit" class="btn btn-primary">Create Repository</button>
   </form>
@@ -161,6 +159,20 @@ const eventlisteners = () => {
         name: document.getElementById("repoName").value,
         description: document.getElementById("formDescription").value,
         favorite: false,
+        contributors: [
+          {
+            username: document.getElementById("username0").value,
+            commits: Math.floor(Math.random() * 50),
+            comments: Math.floor(Math.random() * 50),
+            branches: Math.floor(Math.random() * 50),
+          },
+          {
+            username: document.getElementById("username1").value,
+            commits: Math.floor(Math.random() * 50),
+            comments: Math.floor(Math.random() * 50),
+            branches: Math.floor(Math.random() * 50),
+          },
+        ],
       };
       console.log(newRepo);
       repos.push(newRepo);
