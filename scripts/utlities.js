@@ -1,5 +1,5 @@
 const skeletonDomString = `
-    
+
       <div id="topContent" class="mainPortion">
         <div id="profileContent" class="leftSide">
         <img src="https://placebeard.it/500
