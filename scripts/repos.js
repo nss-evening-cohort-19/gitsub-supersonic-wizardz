@@ -9,9 +9,9 @@ const repos = [
     favorite: false,
     contributors: [
       { username: "shalane-proctor", commits: 25, comments: 5, branches: 10 },
+      { username: "PennCreative", commits: 26, comments: 9, branches: 17 },
       { username: "patrick24cr", commits: 29, comments: 7, branches: 9 },
       { username: "scamp925", commits: 19, comments: 12, branches: 13 },
-      { username: "PennCreative", commits: 26, comments: 9, branches: 17 },
     ],
   },
   {
@@ -33,8 +33,8 @@ const repos = [
     favorite: false,
     contributors: [
       { username: "shalane-proctor", commits: 25, comments: 5, branches: 10 },
-      { username: "patrick24cr", commits: 16, comments: 0, branches: 14 },
       { username: "scamp925", commits: 38, comments: 6, branches: 9 },
+      { username: "patrick24cr", commits: 16, comments: 0, branches: 14 },
     ],
   },
   {
