@@ -61,7 +61,15 @@ const newRepoForm = () => {
 };
 
 const title = () => {
-  const domString = `<div class="d-flex w-100 justify-content-between""><h3>Repositories</h3><buttontype="button" id="favoriteSort" class="btn btn-light"><i class="fa-solid fa-heart"></i></buttontype=></div>`;
+  const domString = `<div class="d-flex w-100 justify-content-between"">
+  <h3>Repositories</h3>
+    <div id="filterContainer">
+      <button type="button" class="btn btn-light" id="favorite">
+        <i id="favorite" class="fa-solid fa-heart"></i>
+      </button>
+      <button type="button" class="btn btn-light" id="all">All</button>
+    </div>
+  </div>`;
   renderToDom("#titleDiv", domString);
 };
 
@@ -141,6 +149,20 @@ const eventlisteners = () => {
       });
   };
 
+  const favoriteFilter = () => {
+    document
+      .querySelector("#filterContainer")
+      .addEventListener("click", (e) => {
+        if (e.target.id === "favorite") {
+          const favs = repos.filter((repo) => repo.favorite === 1);
+          repoCards(favs);
+        } else if (e.target.id === "all") {
+          console.log("clicked");
+          repoCards(repos);
+        }
+      });
+  };
+
   const deleteBtn = () => {
     document
       .querySelector("#uploadedContent, .deleteButton")
@@ -159,6 +181,7 @@ const eventlisteners = () => {
   formBtn();
   deleteBtn();
   favoriteBtn();
+  favoriteFilter();
 };
 function startApp() {
   renderToDom("#mainPage", skeletonDomString);
